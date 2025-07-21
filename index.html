@@ -26,7 +26,7 @@
         ]
         var provtax=[0.505,0.0915,0.1116,0.1216,0.1316]
         const tax=(inc,incd)=>{
-            var txd
+            var txd=0
             if (incd<=fed[0]){
                 inc-=fed[0]
                 txd+=fed[0]*fedtax[0]
