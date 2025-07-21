@@ -1,1 +1,57 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivaan D's Finance</title>
+</head>
+<body>
+    
+    <script>
+        var fed=[
+            [0,57375],
+            [57375.01,114750],
+            [114750.01,177882],
+            [177882.01,253414],
+            [253414.01,Infinity]
+        ]
+        var fedtax=[0.15,0.205,0.26,0.29,0.33]
+        var prov=[
+            [0,52886],
+            [52886.01,105775],
+            [105775.01, 150000],
+            [150000.01,220000],
+            [220000.01,Infinity]
+        ]
+        var provtax=[0.505,0.0915,0.1116,0.1216,0.1316]
+        const tax=(inc,incd)=>{
+            var txd
+            if (incd<=fed[0]){
+                inc-=fed[0]
+                txd+=fed[0]*fedtax[0]
+            }
+            if (incd<=fed[1]){
+                inc-=fed[1]
+                txd+=fed[1]*fedtax[1]
+            }
+            if (incd<=fed[2]){
+                inc-=fed[2]
+                txd+=fed[2]*fedtax[2]
+            }
+            if (incd<=fed[3]){
+                inc-=fed[3]
+                txd+=fed[3]*fedtax[3]
+            }
+            if (incd<=fed[4]){
+                inc-=fed[4]
+                txd+=fed[4]*fedtax[0]
+            }
+            txd+=inc
+            txd=txd*100
+            txd=Math.round(txd)
+            txd=txd/100
+            return txd
+        }
+    </script>
+</body>
+</html>
