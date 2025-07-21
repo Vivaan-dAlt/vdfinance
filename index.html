@@ -27,26 +27,10 @@
         var provtax=[0.505,0.0915,0.1116,0.1216,0.1316]
         const tax=(inc,incd)=>{
             var txd=0
-            if (incd<=fed[0]){
-                inc-=fed[0]
-                txd+=fed[0]*fedtax[0]
-            }
-            if (incd<=fed[1]){
-                inc-=fed[1]
-                txd+=fed[1]*fedtax[1]
-            }
-            if (incd<=fed[2]){
-                inc-=fed[2]
-                txd+=fed[2]*fedtax[2]
-            }
-            if (incd<=fed[3]){
-                inc-=fed[3]
-                txd+=fed[3]*fedtax[3]
-            }
-            if (incd<=fed[4]){
-                inc-=fed[4]
-                txd+=fed[4]*fedtax[0]
-            }
+            if (incd>=fed[0][0]){
+                incd <= fed[0][1] ? inc-=incd : inc-=fed[0][1]
+                incd <= fed[0][1] ? txd+=incd*fedtax[0] : inc-=fed[0][1]*fedtax[0]
+            } // TO DO: DUPLICATE AND VERIFY
             txd+=inc
             txd=txd*100
             txd=Math.round(txd)
